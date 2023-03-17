@@ -5,9 +5,14 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
+<<<<<<< HEAD
             <% if (request.getSession().getAttribute("user") != null) {%>
             <a class="navbar-brand" id="createBtn" href="/ads/create">Create Ad</a>
             <% } %>
+=======
+            <a href="/ads/create">Create Ad</a>
+
+>>>>>>> f1cfc9c (working on ad details. branching after this commit)
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/register">Register</a></li>
