@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.MySQLUsersDao;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -25,7 +27,8 @@ public class RegisterServlet extends HttpServlet {
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
-            || password.isEmpty();
+            || password.isEmpty() || DaoFactory.getUsersDao().findByUsername(username) != null;
+
 
         if (inputHasErrors) {
             response.sendRedirect("/register");

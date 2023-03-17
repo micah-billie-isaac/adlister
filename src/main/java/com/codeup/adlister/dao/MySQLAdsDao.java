@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -36,6 +37,27 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
+    }
+
+    public List<Ad> getAdsByUser(User user) {
+        List<Ad> ads = new ArrayList<>();
+        String query = "SELECT * FROM ads WHERE user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, user.getId());
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Ad ad = new Ad();
+                ad.setId(rs.getLong("id"));
+                ad.setTitle(rs.getString("title"));
+                ad.setDescription(rs.getString("description"));
+                // ...
+                ads.add(ad);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ads;
     }
 
     @Override
