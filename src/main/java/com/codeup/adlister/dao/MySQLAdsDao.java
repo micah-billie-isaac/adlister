@@ -4,9 +4,6 @@ import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +36,9 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    public List<Ad> getAdsByUser(User user) {
-        List<Ad> ads = new ArrayList<>();
+    @Override
+    public ArrayList<Ad> getAdsByUser(User user) {
+        ArrayList<Ad> ads = new ArrayList<>();
         String query = "SELECT * FROM ads WHERE user_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);

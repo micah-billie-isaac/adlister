@@ -1,10 +1,12 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -57,12 +59,22 @@ public class MySQLUsersDao implements Users {
         if (! rs.next()) {
             return null;
         }
-        return new User(
+        User user = new User(
             rs.getLong("id"),
             rs.getString("username"),
             rs.getString("email"),
             rs.getString("password")
         );
+        user.setAds(DaoFactory.getAdsDao().getAdsByUser(user));
+        // go get the user's adds from the ad dao
+        // set that list of ads to the user's ad list
+
+        return user;
     }
 
+    public static void main(String[] args) {
+        MySQLUsersDao dao = (MySQLUsersDao) DaoFactory.getUsersDao();
+        User user = dao.findByUsername("isaac");
+        System.out.println(user);
+    }
 }
