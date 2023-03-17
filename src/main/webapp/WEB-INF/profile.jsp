@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,7 +13,11 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
     <div class="container">
-        <h1>Here are your current ads: ${sessionScope.user.ads}!</h1>
-    </div>
+        <c:forEach var="ad" items="${sessionScope.user.ads}">
+            <div class="col-md-6">
+                <h2>${ad.title}</h2>
+                <p>${ad.description}</p>
+            </div>
+        </c:forEach>    </div>
 </body>
 </html>
