@@ -10,8 +10,12 @@
             <% } %>
         </div>
         <ul class="nav navbar-nav navbar-right">
+            <% if (request.getSession().getAttribute("user") == null) {%>
             <li><a href="/register">Register</a></li>
+            <% } %>
+            <% if (request.getSession().getAttribute("user") == null) {%>
             <li><a href="/login">Login</a></li>
+            <% } %>
 
             <% if (request.getSession().getAttribute("user") != null) {%>
             <li><a href="/logout">Logout</a></li>
