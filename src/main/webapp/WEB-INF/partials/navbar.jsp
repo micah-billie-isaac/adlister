@@ -33,7 +33,6 @@
             <% if (request.getSession().getAttribute("user") != null) {%>
             <li><a href="/logout">Logout</a></li>
             <% } %>
-
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
