@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codeup.adlister.models.Ad" %><%--
   Created by IntelliJ IDEA.
   User: billiedorries
   Date: 3/17/23
@@ -7,6 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
   <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -18,6 +19,8 @@
 
   <div class="container">
     <h1>Ad</h1>
+    <h3><c:out value = "${fetchedAd.title}"/></h3>
+    <p><c:out value = "${fetchedAd.description}"/></p>
   </div>
 
 </body>
