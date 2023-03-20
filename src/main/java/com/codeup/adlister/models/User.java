@@ -57,4 +57,24 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public ArrayList<Ad> getAds() {
+        return ads;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", ads=" + ads +
+                '}';
+    }
+
+    public void setAds(ArrayList<Ad> ads) {
+        this.ads = ads;
+    }
 }
+

@@ -13,6 +13,16 @@ public class Ad {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
