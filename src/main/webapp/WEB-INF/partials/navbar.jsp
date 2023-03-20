@@ -11,6 +11,7 @@
             <% } %>
         </div>
 <%--        search bar--%>
+
         <div class="search">
             <form action="/search" method="get">
                 <input type="text"
