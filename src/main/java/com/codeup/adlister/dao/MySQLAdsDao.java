@@ -60,7 +60,7 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Ad findByTitle(String title) {
-        String query = "SELECT * FROM ads WHERE title = ? LIMIT 1";
+        String query = "SELECT * FROM ads WHERE title = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, title);
