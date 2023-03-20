@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "searchBar", urlPatterns = "/search")
 public class SearchServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchQuery = request.getParameter("search");
-        Ad searchResults = DaoFactory.getAdsDao().findByTitle(searchQuery);
+        List<Ad> searchResults = DaoFactory.getAdsDao().findByTitle(searchQuery);
         request.setAttribute("searchResults", searchResults);
         request.getRequestDispatcher("/searchResults.jsp").forward(request, response);
     }

@@ -16,10 +16,10 @@
 </head>
 <body>
 <%
-        Ad searchAd=request.getAttribute("searchResults")
+    Ad searchAd = request.getAttribute("searchResults");
 %>
 <tr>
-    <td><%searchAd.getTitle()%>
+    <td><% searchAd.getTitle(); %>
     </td>
 </tr>
 </body>

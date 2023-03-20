@@ -10,7 +10,7 @@ public interface Ads {
     // get a list of all the ads
     List<Ad> all();
 
-    Ad findByTitle(String title);
+    List<Ad> findByTitle(String title);
 
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);

@@ -24,17 +24,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    @Override
-    public List<Ad> all() {
-        PreparedStatement stmt = null;
-        try {
-            stmt = connection.prepareStatement("SELECT * FROM ads");
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
-        }
-    }
+
 
     @Override
     public ArrayList<Ad> getAdsByUser(User user) {
@@ -59,12 +49,25 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Ad findByTitle(String title) {
+    public List<Ad> all() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> findByTitle(String title) {
         String query = "SELECT * FROM ads WHERE title = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, title);
-            return extractAd(stmt.executeQuery());
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Ad not found", e);
         }
