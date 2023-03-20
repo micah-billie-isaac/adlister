@@ -9,6 +9,18 @@
             <a class="navbar-brand" id="createBtn" href="/ads/create">Create Ad</a>
             <% } %>
         </div>
+<%--        search bar--%>
+        <div class="search">
+            <form action="/search" method="get">
+                <input type="text"
+                       placeholder="Search Courses"
+                       name="search">
+                <button>
+                    <i class="fa fa-search"
+                       style="font-size: 18px"></i></button>
+            </form>
+        </div>
+
         <ul class="nav navbar-nav navbar-right">
             <% if (request.getSession().getAttribute("user") == null) {%>
             <li><a href="/register">Register</a></li>

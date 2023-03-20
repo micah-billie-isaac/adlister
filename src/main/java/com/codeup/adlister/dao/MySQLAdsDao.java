@@ -66,7 +66,7 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(1, title);
             return extractAd(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            throw new RuntimeException("Ad not found", e);
         }
     }
 
