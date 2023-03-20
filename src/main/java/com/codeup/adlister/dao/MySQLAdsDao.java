@@ -59,6 +59,19 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public Ad findByTitle(String title) {
+        String query = "SELECT * FROM ads WHERE title = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, title);
+            return extractAd(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username", e);
+        }
+    }
+
+
+    @Override
     public Long insert(Ad ad) {
         try {
             String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
