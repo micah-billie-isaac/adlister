@@ -16,31 +16,41 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if(username.length() < 3){
-            request.setAttribute("req1", "username Error");
-        }
-        if(username.length() > 15){
-            request.setAttribute("req2", "username Error");
-        }
-        if(password.length() < 8){
-            request.setAttribute("req3", "password Error");
-        }
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty() || DaoFactory.getUsersDao().findByUsername(username) != null;
 
+        if(username.length() < 3){
+            request.setAttribute("req1", "username error");
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request,response);
+            return;
+
+        }
+        if(username.length() > 15){
+            request.setAttribute("req2", "username error");
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request,response);
+            return;
+
+        }
+        if(password.length() < 8){
+            request.setAttribute("req3", "password error");
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request,response);
+            return;
+        }
+
 
         if (inputHasErrors) {
             response.sendRedirect("/register");
             return;
         }
+
 
 
 
