@@ -14,11 +14,16 @@
     </div>
     <div class="container">
         <c:forEach var="ad" items="${sessionScope.user.ads}">
-            <div class="col-md-6">
-                <h2>${ad.title}</h2>
-                <p>${ad.description}</p>
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${ad.title}</h5>
+                    <p>
+                        <a>${ad.description}</a>
+                    </p>
+                </div>
             </div>
         </c:forEach>
     </div>
+
 </body>
 </html>

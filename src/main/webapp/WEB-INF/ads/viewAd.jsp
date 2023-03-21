@@ -10,19 +10,23 @@
 
 <html>
 <head>
-  <jsp:include page="/WEB-INF/partials/head.jsp">
-    <jsp:param name="title" value="Viewing ad" />
-  </jsp:include>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Viewing ad"/>
+    </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
-  <div class="container">
-    <h1>Ad</h1>
-    <h3><c:out value = "${fetchedAd.title}"/></h3>
-    <p><c:out value = "${fetchedAd.description}"/></p>
-  </div>
-
+<div class="container">
+    <div class="card" style="width: 10rem;">
+        <div class="card-body">
+            <h5 class="card-title"><c:out value="${fetchedAd.title}"/></h5>
+            <p>
+                <a><c:out value="${fetchedAd.description}"/></a>
+            </p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
