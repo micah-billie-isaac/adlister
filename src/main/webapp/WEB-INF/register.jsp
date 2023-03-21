@@ -6,6 +6,25 @@
     </jsp:include>
 </head>
 <body>
+
+<% if (request.getAttribute("req1") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Username is shorter than 3 characters!
+</div>
+
+<% } %>
+<% if (request.getAttribute("req2") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Username is longer than 15 characters!
+</div>
+
+<% } %><% if (request.getAttribute("req3") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Password is shorter than 8 characters!
+</div>
+<% } %>
+
+
 <jsp:include page="partials/navbar.jsp"/>
 <div class="container">
     <h1>Please fill in your information.</h1>

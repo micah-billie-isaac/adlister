@@ -21,6 +21,15 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        if(username.length() < 3){
+            request.setAttribute("req1", "username Error");
+        }
+        if(username.length() > 15){
+            request.setAttribute("req2", "username Error");
+        }
+        if(password.length() < 8){
+            request.setAttribute("req3", "password Error");
+        }
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -32,6 +41,10 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
             return;
         }
+
+
+
+
 
         // create and save a new user
         User user = new User(username, email, password);
