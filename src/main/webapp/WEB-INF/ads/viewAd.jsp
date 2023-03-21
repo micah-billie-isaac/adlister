@@ -21,6 +21,11 @@
     <h1>Ad</h1>
     <h3><c:out value = "${fetchedAd.title}"/></h3>
     <p><c:out value = "${fetchedAd.description}"/></p>
+        <ul id="category-list">
+          <c:forEach var="category" items="${fetchedAd.categories}">
+            <li>${category}</li>
+          </c:forEach>
+        </ul>
   </div>
 
 </body>

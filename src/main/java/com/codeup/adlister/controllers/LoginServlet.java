@@ -42,3 +42,15 @@ public class LoginServlet extends HttpServlet {
         }
     }
 }
+/*
+list in ads object List<Category> categories
+db table for cat with joining table (ids)
+DAO to include categories.
+grab id from rs
+copy fetchbyid to get categories assoc with ad
+
+select *
+from ads_categories ac
+join categories c on ac.category_id = c.id
+where ac.ad_id = ?;
+ */

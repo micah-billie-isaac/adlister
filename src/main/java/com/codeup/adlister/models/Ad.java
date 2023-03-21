@@ -1,10 +1,22 @@
 package com.codeup.adlister.models;
 
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+
+    List<Category> categories;
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
