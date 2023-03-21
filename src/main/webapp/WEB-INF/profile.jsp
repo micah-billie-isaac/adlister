@@ -19,6 +19,7 @@
                     <h5 class="card-title">${ad.title}</h5>
                     <p>
                         <a>${ad.description}</a>
+                        <a href="/delete?id=${ad.id}">Delete</a>
                     </p>
                 </div>
             </div>

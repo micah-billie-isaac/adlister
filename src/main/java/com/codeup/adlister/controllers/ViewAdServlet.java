@@ -18,5 +18,6 @@ public class ViewAdServlet extends HttpServlet {
         request.setAttribute("fetchedAd", ad);
         request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
 
+
     }
 }
