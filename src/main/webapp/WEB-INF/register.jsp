@@ -17,12 +17,13 @@
 <div class="alert alert-danger" role="alert">
     Username is shorter than 3 characters!
 </div>
-
 <% } %>
+
 <% if (request.getAttribute("req2") != null) {%>
 <div class="alert alert-danger" role="alert">
     Username is longer than 15 characters!
 </div>
+<% } %>
 
 <% } %><% if (request.getAttribute("req3") != null) {%>
 <div class="alert alert-danger" role="alert">

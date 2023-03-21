@@ -6,6 +6,11 @@
     </jsp:include>
 </head>
 <body>
+<% if (request.getAttribute("error") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Invalid Username or Password
+</div>
+<% } %>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1>
@@ -21,6 +26,5 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
     </div>
-
 </body>
 </html>
