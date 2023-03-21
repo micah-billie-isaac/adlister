@@ -1,8 +1,10 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
+import org.w3c.dom.ls.LSOutput;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,9 +25,6 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
-
-
-
     @Override
     public ArrayList<Ad> getAdsByUser(User user) {
         ArrayList<Ad> ads = new ArrayList<>();
@@ -91,6 +90,9 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
+   
+
     @Override
     public boolean delete(Ad ad) {
         try {
@@ -120,17 +122,23 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-
-
-
     private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
+
+        long adID = rs.getLong("id");
+
+        List<Category> categories = fetchCategoriesByAdID(adID);
+
+        Ad ad = new Ad(
             rs.getLong("id"),
             rs.getLong("user_id"),
             rs.getString("title"),
             rs.getString("description")
         );
+        ad.setCategories(categories);
+        return ad;
     }
+    
+    
     @Override
     public Ad fetchAdByID(long id){
         try{
@@ -139,14 +147,36 @@ public class MySQLAdsDao implements Ads {
             ResultSet rs = stmt.executeQuery(fetchQuery);
             rs.next();
 
-            return new Ad(
-                    rs.getLong("id"),
-                    rs.getLong("user_id"),
-                    rs.getString("title"),
-                    rs.getString("description")
-            );
+            return extractAd(rs);
         }catch(Exception e){
             throw new RuntimeException("Error finding ad.", e);
+        }
+    }
+
+    public List<Category> fetchCategoriesByAdID(long adID){
+
+        List<Category> categories = new ArrayList<>();
+
+        try{
+            String fetchQuery =
+                "select * " +
+                "from ads_categories ac " +
+                "join categories c on ac.category_id = c.id " +
+                "where ac.ad_id = "+adID;
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(fetchQuery);
+            while(rs.next()){
+                Category category = new Category(
+
+                        rs.getLong("category_id"),
+                        rs.getString("name")
+                );
+                categories.add(category);
+            }
+            return categories;
+
+        }catch(Exception e){
+            throw new RuntimeException("Error finding category.", e);
         }
     }
 
