@@ -72,9 +72,4 @@ public class MySQLUsersDao implements Users {
         return user;
     }
 
-    public static void main(String[] args) {
-        MySQLUsersDao dao = (MySQLUsersDao) DaoFactory.getUsersDao();
-        User user = dao.findByUsername("isaac");
-        System.out.println(user);
-    }
 }
