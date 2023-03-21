@@ -4,7 +4,6 @@ import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
-import org.w3c.dom.ls.LSOutput;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -91,20 +90,19 @@ public class MySQLAdsDao implements Ads {
     }
 
 
-   
 
     @Override
-    public boolean delete(Ad ad) {
+    public void deleteAd(long id) {
+        String query = "DELETE FROM ads WHERE id = ?";
         try {
-            String deleteQuery = "DELETE FROM ads WHERE id = ?";
-            PreparedStatement stmt = connection.prepareStatement(deleteQuery);
-            stmt.setLong(1, ad.getId());
-            int rowsDeleted = stmt.executeUpdate();
-            return rowsDeleted > 0;
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting ad.", e);
         }
     }
+
 
     @Override
     public boolean update(Ad ad) {
@@ -152,14 +150,14 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding ad.", e);
         }
     }
-
+    @Override
     public List<Category> fetchCategoriesByAdID(long adID){
 
         List<Category> categories = new ArrayList<>();
 
         try{
             String fetchQuery =
-                "select * " +
+                    "select * " +
                 "from ads_categories ac " +
                 "join categories c on ac.category_id = c.id " +
                 "where ac.ad_id = "+adID;
@@ -177,6 +175,19 @@ public class MySQLAdsDao implements Ads {
 
         }catch(Exception e){
             throw new RuntimeException("Error finding category.", e);
+        }
+    }
+
+    @Override
+    public void deleteCategoryAd(long categoryId, long adId) {
+        try {
+            String query = "DELETE FROM ads_categories WHERE category_id = ? AND ad_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, categoryId);
+            stmt.setLong(2, adId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting category-ad association.", e);
         }
     }
 
