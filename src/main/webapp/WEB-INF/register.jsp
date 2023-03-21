@@ -25,7 +25,7 @@
 </div>
 <% } %>
 
-<% } %><% if (request.getAttribute("req3") != null) {%>
+<% if (request.getAttribute("req3") != null) {%>
 <div class="alert alert-danger" role="alert">
     Password is shorter than 8 characters!
 </div>
