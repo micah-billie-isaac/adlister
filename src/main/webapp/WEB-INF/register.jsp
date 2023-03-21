@@ -7,6 +7,12 @@
 </head>
 <body>
 
+<% if (request.getAttribute("req0") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Username is already in use!
+</div>
+<% } %>
+
 <% if (request.getAttribute("req1") != null) {%>
 <div class="alert alert-danger" role="alert">
     Username is shorter than 3 characters!

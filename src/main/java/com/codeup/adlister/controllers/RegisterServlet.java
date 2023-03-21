@@ -25,7 +25,12 @@ public class RegisterServlet extends HttpServlet {
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
-            || password.isEmpty() || DaoFactory.getUsersDao().findByUsername(username) != null;
+            || password.isEmpty();
+
+        if(DaoFactory.getUsersDao().findByUsername(username) != null){
+            request.setAttribute("req0", "username error");
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request,response);
+        }
 
         if(username.length() < 3){
             request.setAttribute("req1", "username error");
