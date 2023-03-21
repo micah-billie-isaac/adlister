@@ -16,5 +16,9 @@ public interface Ads {
     Long insert(Ad ad);
     ArrayList<Ad> getAdsByUser(User user);
 
+    boolean delete(Ad ad);
+
+    boolean update(Ad ad);
+
     Ad fetchAdByID(long id);
 }

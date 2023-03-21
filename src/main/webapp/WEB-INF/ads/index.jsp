@@ -10,17 +10,24 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Here are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
 
-            <a href="/ViewAdServlet?id=${ad.id}">...more</a>
-
+        <div class="card" style="width: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title">${ad.title}</h5>
+                <p>
+                    <a href="/ViewAdServlet?id=${ad.id}">...more</a>
+                </p>
+            </div>
         </div>
     </c:forEach>
 </div>
-
+<style>
+    body {
+        background-color: ivory;
+    }
+</style>
 </body>
 </html>

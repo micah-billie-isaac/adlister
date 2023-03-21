@@ -20,5 +20,10 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
+    <style>
+        body {
+            background-color: ivory;
+        }
+    </style>
 </body>
 </html>

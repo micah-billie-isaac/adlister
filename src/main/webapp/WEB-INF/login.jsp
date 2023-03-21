@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%--<% request.setAttribute("error", "hello"); %>--%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -8,13 +6,14 @@
     </jsp:include>
 </head>
 <body>
+<% if (request.getAttribute("error") != null) {%>
+<div class="alert alert-danger" role="alert">
+    Invalid Username or Password
+</div>
+<% } %>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
     <div class="container">
         <h1>Please Log In</h1>
-        <% if (request.getAttribute("error") != null) {%>
-            <h3>Invalid Username Or Password</h3>
-        <% } %>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
