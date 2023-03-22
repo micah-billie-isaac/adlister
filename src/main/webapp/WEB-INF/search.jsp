@@ -19,8 +19,8 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <c:forEach var="ad" items="${ads}">
-    <div class="container">
-        <div class="card" style="width: 10rem;">
+    <div class="container d-flex justify-content-center">
+        <div class="card border shadow text-center" style="width: 10rem;">
             <div class="card-body">
                 <h5 class="card-title">${ad.title}</h5>
                 <p>

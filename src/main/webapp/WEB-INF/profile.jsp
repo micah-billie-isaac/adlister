@@ -9,27 +9,20 @@
 
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-<div class="container">
-    <div class="card">
-        <div class="container text-center">
-            <h1>Welcome, ${sessionScope.user.username}!</h1>
+<h1 class="text-center">Welcome, ${sessionScope.user.username}!</h1>
+
+
+<div class="container text-center d-flex justify-content-between">
+    <c:forEach var="ad" items="${sessionScope.user.ads}">
+        <div class="card border shadow text-center" style="width: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title">${ad.title}</h5>
+                <a>${ad.description}</a>
+                <br>
+                <a href="/delete?id=${ad.id}">Delete</a>
+            </div>
         </div>
-<%--        <div class="container text-center d-flex flex-wrap justify-content-center">--%>
-            <c:forEach var="ad" items="${sessionScope.user.ads}">
-                <div class="card" style="width: 10rem;">
-                    <div class="card border shadow" style="width: 10rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${ad.title}</h5>
-                            <p>
-                                <a>${ad.description}</a>
-                                <a href="/delete?id=${ad.id}">Delete</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-<%--    </div>--%>
+    </c:forEach>
 </div>
 </body>
 </html>
