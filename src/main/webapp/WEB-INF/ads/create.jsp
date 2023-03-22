@@ -6,6 +6,7 @@
     </jsp:include>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Create a new Ad</h1>
     <form action="/ads/create" method="post">
@@ -18,41 +19,6 @@
             <textarea id="description" name="description" class="form-control" type="text"></textarea>
         </div>
 
-        <label>Categories</label>
-        <div class="form-group">
-            <div class="category">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="help">
-                    <label class="form-check-label" for="help">
-                        Help Wanted
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="furniture">
-                    <label class="form-check-label" for="furniture">
-                        Furniture
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="animals">
-                    <label class="form-check-label" for="animals">
-                        Animals
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="exercise">
-                    <label class="form-check-label" for="exercise">
-                        Exercise
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="misc">
-                    <label class="form-check-label" for="misc">
-                        Miscellaneous
-                    </label>
-                </div>
-            </div>
-        </div>
 
         <input type="submit" class="btn btn-block btn-primary">
     </form>
