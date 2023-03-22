@@ -55,7 +55,7 @@
             <h5 class="card-title">Register Requirements</h5>
             <p>
                 <a>Username must have more than 3 characters:</a>
-                <a>Username must have less than 15 characters:</a>
+                <a>Username must have fewer than 15 characters:</a>
                 <a>Password must have more than 8 characters:</a>
             </p>
         </div>
