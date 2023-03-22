@@ -26,6 +26,11 @@
                 <p>
                     <a>${ad.description}</a>
                 </p>
+                <ul id="category-list">
+                    <c:forEach var="category" items="${ad.categories}">
+                        <li>${category}</li>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
     </div>
