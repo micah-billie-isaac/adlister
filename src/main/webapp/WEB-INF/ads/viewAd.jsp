@@ -17,20 +17,22 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
     <div class="card" style="width: 10rem;">
-        <div class="card-body">
-            <h5 class="card-title"><c:out value="${fetchedAd.title}"/></h5>
-            <p>
-                <a><c:out value="${fetchedAd.description}"/></a>
+        <div class="card border shadow" style="width: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title"><c:out value="${fetchedAd.title}"/></h5>
+                <p>
+                    <a><c:out value="${fetchedAd.description}"/></a>
                 <ul id="category-list">
                     <c:forEach var="category" items="${fetchedAd.categories}">
-                      <li>${category}</li>
+                        <li>${category}</li>
                     </c:forEach>
                 </ul>
-            </p>
+                </p>
+            </div>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-<div class="container">
+<div class="container text-center">
     <h1>Here are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
@@ -24,10 +24,5 @@
         </div>
     </c:forEach>
 </div>
-<style>
-    body {
-        background-color: ivory;
-    }
-</style>
 </body>
 </html>
